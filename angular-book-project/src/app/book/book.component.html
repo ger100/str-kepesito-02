@@ -2,10 +2,10 @@
 
   <div class="row">
     <div class="col-6 offset-3">
-      <form #cForm="ngForm" (ngSubmit)="saveBook(book)">
+      <form #cForm="ngForm" <--!(ngSubmit)="saveBook()" -->> >
         <div class="form-group">
           <label for="title">Name:</label>
-          <input required [(ngModel)]="customer.name" name="title" type="text" class="form-control" pattern="^[A-Űa-ű0-9].{5,25}$">
+          <input required [ name="title" type="text" class="form-control" pattern="^[A-Űa-ű0-9].{5,25}$">
           <small [hidden]="cForm.controls.title?.valid || cForm.controls.title?.pristine " class="danger error-message">
             Title is required.
           </small>
@@ -13,7 +13,7 @@
 
         <div class="form-group">
           <label for="author" >Author:</label>
-          <input required [(ngModel)]="customer.author" name="author" type="text" class="form-control" pattern="^[A-Űa-ű\ \.].{5,30}$">
+          <input required name="author" type="text" class="form-control" pattern="^[A-Űa-ű\ \.].{5,30}$">
           <small [hidden]="cForm.controls.author?.valid || cForm.controls.author?.pristine " class="danger error-message">
             Name is required.
           </small>
