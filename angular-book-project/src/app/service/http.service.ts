@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { Book } from '../model/book';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +12,24 @@ export class HttpService {
 
   BASE_URL = 'http://localhost:3000/books';
 
-  constructor(undefined) { }
+  constructor(
+    private http:HttpClientModule,) { }
 
-  getBookList():any{}
+  getBookList():Observable<Book[]> {
+    return this.http.get.<Book[]>(this.BASE_URL);
+  }
 
-  readABook(id, book):any{}
+  readABook(id, book):Observable<Book[]>{
+    return this.http.get<Book[]>(`${this.BASE_URL}/${id}`);
+  }
+
+  create(book: Book): Observable<Book> {
+    return this.http.post<Book>(`${this.BASE_URL}`, book);
+  }
+
+
+
+   update(user: Book): Observable<Book> {
+    return this.http.patch<Book>(`${this.BASE_URL}/${user.id}`, book);
+
 }

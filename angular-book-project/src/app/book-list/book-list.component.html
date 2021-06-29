@@ -1,7 +1,28 @@
 <section class="table-section">
     <button id="get-button">Get Book List</button>
     <table>
-        <thead></thead>
-        <tbody></tbody>
+        <thead>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>NumberOfReaders</th>
+        <th>Category</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of bookList | async">
+            <td class="table-row">{{ book.id }}</td>
+            <td class="table-row">{{ book.title }}</td>
+            <td class="table-row">{{ book.author }}</td>
+            <td class="table-row">{{ book.numberOfReaders }}</td>
+            <td class="table-row">{{ book.category }}</td>
+            <td class="table-row">
+              <div class="btn-group">
+                <button (click)="readBook(book)" [routerLink]="['/' + book.id]"  id="read-button" class="btn btn-info">
+                  <i class="fa fa-pencil"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
     </table>
 </section>

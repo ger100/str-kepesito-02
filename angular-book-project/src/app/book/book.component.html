@@ -1,3 +1,43 @@
-<section>
+<section class="container-md">
+
+  <div class="row">
+    <div class="col-6 offset-3">
+      <form #cForm="ngForm" (ngSubmit)="saveBook(book)">
+        <div class="form-group">
+          <label for="title">Name:</label>
+          <input required [(ngModel)]="customer.name" name="title" type="text" class="form-control" pattern="^[A-Űa-ű0-9].{5,25}$">
+          <small [hidden]="cForm.controls.title?.valid || cForm.controls.title?.pristine " class="danger error-message">
+            Title is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="author" >Author:</label>
+          <input required [(ngModel)]="customer.author" name="author" type="text" class="form-control" pattern="^[A-Űa-ű\ \.].{5,30}$">
+          <small [hidden]="cForm.controls.author?.valid || cForm.controls.author?.pristine " class="danger error-message">
+            Name is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select name="category" id="cars">
+            <option value="Adventure" selected>Adventure</option>
+            <option value="Crime">Crime</option>
+            <option value="Romance">Romance</option>
+          </select>
+          <small [hidden]="cForm.controls.category?.valid || cForm.controls.category?.pristine " class="danger error-message">
+            Name is required.
+          </small>
+        </div>
+
+        <button class="btn btn-block btn-success" [disabled]="cForm.controls?.invalid || cForm.controls?.pristine">Save New Book</button>
+
+      </form>
+    </div>
+  </div>
+
+
+
 
 </section>
